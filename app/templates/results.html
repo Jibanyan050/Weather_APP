@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+ <table id="data" class="table table-striped">
+   <thead>
+     <tr>
+       <th>Location</th>
+       <th>Weather</th>
+       <th>Datetime</th>
+     </tr>
+   </thead>
+   <tbody>
+
+   </tbody>
+ </table>
+
+
+{% endblock %}
+{% block scripts %}
+
+ <script>
+   $(document).ready(function () {
+     $('#data').DataTable({
+       ajax: '/api/results',
+       pageLength: 25,
+       columns: [
+         {data: 'location'},
+         {data: 'weather'},
+         {data: 'datetime'}
+       ],
+     });
+   });
+ </script>
+
+{% endblock %}
+
+
+
